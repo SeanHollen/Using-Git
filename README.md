@@ -215,6 +215,10 @@ Show changes of a specific commit
 
 ``git show <commit hash>``
 
+Show just names in files change in last commits, 2 in this case
+
+``git diff --name-only HEAD~2``
+
 ## Fix merge conflict / Bring changes from master branch into your branch
 
 I used to do this:
