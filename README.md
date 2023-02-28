@@ -320,3 +320,4 @@ There are a few options for dealing with the upstream branch, which still has th
 - [Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging)
 - Showing file history with [file logs](https://alvinalexander.com/git/show-commit-history-detailed-for-single-file/) and [git blame](https://www.atlassian.com/git/tutorials/inspecting-a-repository/git-blame)
 - [git cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+- [Type-insensitivity in file names](https://stackoverflow.com/questions/17683458/how-do-i-commit-case-sensitive-only-filename-changes-in-git)
