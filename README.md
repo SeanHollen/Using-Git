@@ -2,7 +2,7 @@
 
 # Background
 
-Frankly, I do not like Git, to the extent that I dislike Linus just for having developed it. It is not just that it's solving a hard problem; I believe it is *needlessly* complicated. It has caused me more grief than arguably any other technology. However, Git is not going away, probably in my lifetime. I've got to to learn to stop worrying and love the git. The below is the minimum viable knowledge you have to memorize to say you "know git" to a medium level.
+Frankly, I'm not a fan of Git. It is not just that it's solving a hard problem; I believe it is *needlessly* complicated. It has caused me more grief than arguably any other technology. However, Git is not going away, probably in my lifetime. I've got to to learn to stop worrying and love the git. The below is the minimum viable knowledge you have to memorize to say you "know git" to a medium level.
 
 Most Git reference materials consist of one of:
 - Very watered-down obvious fluff
@@ -46,9 +46,11 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **remote** - non-local (ie, github)
 - **master** - the primary branch of a repo 
 - **main** - what github renamed master to
-- **HEAD** - the last commit in the current branch 
+- **HEAD** - the last commit in the current branch
+- **heads** - another term for branches
+- **detached head** a "HEAD" set to something that's *not* the last commit in the current branch
 - **fork** - a copy of a branch created with clone or fork commands
-- **upstream** - the thing that "git push" pushes to by default
+- **upstream** - the thing that "git push" pushes to, and "git pull" pulls from, by default
 - **origin** - the remote version of your repo fork
 - **staging area** / **index** / **cache** - all refer to: what "gid add" adds files to (to indicate what will be part of next commit)
 - **stage** (v) - to add to staging area
@@ -56,6 +58,10 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **working directory** / **working tree** / **project folder** - the place on your computer with the workspace and the local repo
 - **pull request** - a request for someone's branch to pull the changes in your branch
 - **squash** - combine multiple commits from the same branch into one
+- **reference** - something like HEAD~2 which can be used in place of the actual commit name
+- **tree-ish** - the name of a commit or reference to a commit
+- **track** - to have an upstream. So you can push and pull from a branch to what it's tracking
+- **remote-tracking branch** - not a branch, and does not track remote. It is a reference to a remote branch, eg, `origin/dev`.
 
 # Commands
 
@@ -78,6 +84,7 @@ git pull = git fetch + git merge
 git fetch = the inverse of push
 git merge = the inverse of add+commit
 git rebase = like merge, but brings the changes commit-by-commit rather than all at once
+git cherry-pick = like rebase, but with a different syntax and work flow
 ```
 
 ## Starting commands
