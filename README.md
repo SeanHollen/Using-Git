@@ -39,26 +39,27 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 
 # Terminology
 
-- **commit** (v) - create a commit (see "Model" section for noun form)
-- **branch** - can refer to a pointer to the last commit in the branch (stack of commits) structure
+- **commit** (noun) - see above
+- **commit** (verb) - create a commit
+- **branch** - can refer to: a pointer to the last commit in the branch (stack of commits) structure
 - **tree** - a tree of branching commits OR another name for a directory (folder on computer)
 - **local** - stuff on your computer
 - **remote** - non-local (ie, github)
 - **master** - the primary branch of a repo 
 - **main** - what github renamed master to
-- **HEAD** - the last commit in the current branch
+- **HEAD** - the last commit in the current branch, describing where you're currently "at"
 - **heads** - another term for branches
-- **detached head** a "HEAD" set to something that's *not* the last commit in the current branch
+- **detached head** - a "HEAD" set to something that's *not* the last commit in the current branch
 - **fork** - a copy of a branch created with clone or fork commands
 - **upstream** - the thing that "git push" pushes to, and "git pull" pulls from, by default
 - **origin** - the remote version of your repo fork
 - **staging area** / **index** / **cache** - all refer to: what "gid add" adds files to (to indicate what will be part of next commit)
-- **stage** (v) - to add to staging area
+- **stage** (verb) - to add to staging area
 - **stash** - a place you can temporarily throw changes to avoid the “you have unstashed changes!” errors, among other things
 - **working directory** / **working tree** / **project folder** - the place on your computer with the workspace and the local repo
 - **pull request** - a request for someone's branch to pull the changes in your branch
 - **squash** - combine multiple commits from the same branch into one
-- **reference** - something like HEAD~2 which can be used in place of the actual commit name
+- **reference** / **symbolic reference** - something like HEAD~2 which can be used in place of the actual commit name
 - **tree-ish** - the name of a commit or reference to a commit
 - **track** - to have an upstream. So you can push and pull from a branch to what it's tracking
 - **remote-tracking branch** - not a branch, and does not track remote. It is a reference to a remote branch, eg, `origin/dev`.
