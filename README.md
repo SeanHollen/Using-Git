@@ -42,7 +42,9 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **commit** (noun) - see above
 - **commit** (verb) - create a commit
 - **branch** - can refer to: a pointer to the last commit in the branch (stack of commits) structure
-- **tree** - a tree of branching commits OR another name for a directory (folder on computer)
+- **tree** - a tree-structure of branching commits
+- **working tree** - working directory (the folder on your computer)
+- **tree-ish** - the name of a commit or reference to a commit
 - **local** - stuff on your computer
 - **remote** - non-local (ie, github)
 - **master** - the primary branch of a repo 
@@ -60,7 +62,6 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **pull request** - a request for someone's branch to pull the changes in your branch
 - **squash** - combine multiple commits from the same branch into one
 - **reference** / **symbolic reference** - something like HEAD~2 which can be used in place of the actual commit name
-- **tree-ish** - the name of a commit or reference to a commit
 - **track** - to have an upstream. So you can push and pull from a branch to what it's tracking
 - **remote-tracking branch** - not a branch, and does not track remote. It is a reference to a remote branch, eg, `origin/dev`.
 
