@@ -43,7 +43,7 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **commit** (verb) - create a commit
 - **branch** - can refer to: a pointer to the last commit in the branch (stack of commits) structure
 - **tree** - a tree-structure of branching commits
-- **working tree** - working directory (the folder on your computer)
+- **working directory** / **working tree** / **project folder** - the place on your computer with the workspace and the local repo
 - **tree-ish** - the name of a commit or reference to a commit
 - **local** - stuff on your computer
 - **remote** - non-local (ie, github)
@@ -58,7 +58,6 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **staging area** / **index** / **cache** - all refer to: what "gid add" adds files to (to indicate what will be part of next commit)
 - **stage** (verb) - to add to staging area
 - **stash** - a place you can temporarily throw changes to avoid the “you have unstashed changes!” errors, among other things
-- **working directory** / **working tree** / **project folder** - the place on your computer with the workspace and the local repo
 - **pull request** - a request for someone's branch to pull the changes in your branch
 - **squash** - combine multiple commits from the same branch into one
 - **reference** / **symbolic reference** - something like HEAD~2 which can be used in place of the actual commit name
