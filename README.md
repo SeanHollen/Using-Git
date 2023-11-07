@@ -62,8 +62,9 @@ Finally, there is the **workspace**: the place where you code in, and by doing s
 - **squash** - combine multiple commits from the same branch into one
 - **reference** / **symbolic reference** - something like HEAD~2 which can be used in place of the actual commit name
 - **track** - to have an upstream, so you can push and pull from a branch to what it's tracking
+- **untracked file** - file not in staging area
 - **remote-tracking branch** - not a branch, and does not track remote. It is a reference to a remote branch, eg, "origin/dev"
-- **hash** - like an id of a commit
+- **hash** / **SHA1** / **object identifier** - a random-looking number that works like an id of a commit
 
 # Commands
 
