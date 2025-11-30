@@ -86,7 +86,7 @@ git diff
 git pull = git fetch + git merge 
 git fetch = the inverse of push
 git merge = the inverse of add+commit
-git rebase = like merge, but brings the changes commit-by-commit rather than all at once
+git rebase = like merge, but brings the changes commit-by-commit rather than all at once, and with a different result (it's complicated)
 git cherry-pick = like rebase, but with a different syntax and work flow
 ```
 
