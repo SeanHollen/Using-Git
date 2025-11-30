@@ -76,3 +76,24 @@
 
 	# create a new branch and go to it
 	b = checkout -b
+
+    # change a commit message with `git rename <commit-hash> "new commit message"`
+    rename = "!f() { \
+        if [ \"$#\" -lt 2 ]; then \
+            echo 'Usage: git rename <commit> <new message>' >&2; \
+            exit 1; \
+        fi; \
+        commit=\"$1\"; shift; \
+        msg=\"$*\"; \
+        full=$(git rev-parse \"$commit\") || exit 1; \
+        FILTER_BRANCH_SQUELCH_WARNING=1 \
+        TARGET_COMMIT=\"$full\" NEW_MSG=\"$msg\" \
+            git filter-branch -f --msg-filter ' \
+                if [ \"$GIT_COMMIT\" = \"$TARGET_COMMIT\" ]; then \
+                    printf \"%s\n\" \"$NEW_MSG\"; \
+                else \
+                    cat; \
+                fi \
+            ' HEAD; \
+    }; f"
+
