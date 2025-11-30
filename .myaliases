@@ -1,0 +1,63 @@
+# paste this into your ~/.gitconfig
+[alias]
+	# give me the name of the branch that I'm currently on
+	bn = rev-parse --abbrev-ref HEAD
+	# list out all of the commits in this branch concisely
+	logg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	# put my new indexed changes into the previous last commit in this branch
+	can = commit --amend --no-edit
+	ca = commit --amend --no-edit
+	fix = commit --amend --no-edit
+	# force push
+	pf = push -f
+	fp = push -f
+	# stash current changes with branch name as message, then switch to the provided branch
+	sw = "!f() { \
+		git stash push -u -m $(git rev-parse --abbrev-ref HEAD) && \
+		git switch \"$1\" && \
+		stash_id=$(git stash list | grep \"$1\" | head -n 1 | cut -d: -f1); \
+		if [ -n \"$stash_id\" ]; then \
+		echo applying_stash; \
+			git stash apply \"$stash_id\"; \
+		fi; \
+	}; f"
+	# list branches in order of when you last visited them
+	recent = "!f() { \
+		current=$(git rev-parse --abbrev-ref HEAD); \
+		git log -g --date=relative --format='%ad|%gs' \
+		| grep 'checkout: moving' \
+		| sed 's/|checkout: moving from .* to /|/' \
+		| awk -v cur=\"$current\" -F '|' '!seen[$2]++ { \
+			if ($2 == cur) { marker=\"*\" } else { marker=\" \" }; \
+			printf \"%s %-30s \\033[32m(%s)\\033[0m\\n\", marker, $2, $1; \
+		}' \
+		| head -n 6; \
+	}; f"
+	# "skip" files to ignore any changes which I made to them
+	skip = update-index --skip-worktree
+	unskip = update-index --no-skip-worktree
+	skipped = "!git ls-files -v | grep '^S' | cut -c 3-"
+	unskip-all = "!f() { \
+		files=$(git ls-files -v | grep '^S' | cut -c 3-); \
+		git update-index --no-skip-worktree $files; \
+	}; f"
+	# make a backup of my existing commits
+	backup = "!f() { \
+        target=\"backups/$(git rev-parse --abbrev-ref HEAD)/$(echo $RANDOM | git hash-object --stdin | cut -c 1-7)\"; \
+        git branch \"$target\" && echo \"Created backup: $target\"; \
+    }; f"
+	# see what files were involved in a certain commit
+	skim = "!git --no-pager show --pretty=\"\" --stat"
+	# create an upstream (github) branch
+	up = push -u origin HEAD
+	# print the top-level folder
+	root = rev-parse --show-toplevel
+	# clear everything not committed
+	wipe = "!git reset --hard HEAD && git clean -fd"
+	nuke = "!git reset --hard HEAD && git clean -fdx"
+	# search through git log commit messages
+	commit-search = "!f() { git log --grep=\"$1\" --format=\"%h\n%s\" | head; }; f"
+	# commit
+	c = commit -m
+	# create a new branch and go to it
+	b = checkout -b
