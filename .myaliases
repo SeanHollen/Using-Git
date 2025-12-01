@@ -13,8 +13,8 @@
 	fix = commit --amend --no-edit
 
 	# force push
-	pf = push --force-with-lease
-	fp = push --force-with-lease
+	pf = push --force-with-lease --force-if-includes
+	fp = push --force-with-lease --force-if-includes
 
 	# stash current changes with branch name as message, then switch to the provided branch
 	sw = "!f() { \
