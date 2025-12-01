@@ -78,7 +78,7 @@
 	b = checkout -b
 
     # change a commit message with `git rename <commit-hash> "new commit message"`
-    rename = "!f() { \
+    reword = "!f() { \
         if [ \"$#\" -lt 2 ]; then \
             echo 'Usage: git rename <commit> <new message>' >&2; \
             exit 1; \
