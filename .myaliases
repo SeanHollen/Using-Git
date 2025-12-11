@@ -41,7 +41,15 @@
 	}; f"
 
 	# "skip" files to ignore any changes which I made to them
-	skip = update-index --skip-worktree
+	skip = "!f() { \
+        git update-index --skip-worktree \"$1\" 2>/dev/null && \
+        echo \"Skipped $1\" || \
+        { \
+            G=$(git config --global core.excludesfile || echo ~/.gitignore_global); \
+            echo \"File is untracked. To ignore globally run:\"; \
+            echo \"  echo \\\"\\\" >> $G && echo \\\"$1\\\" >> $G\"; \
+        }; \
+    }; f"
 	unskip = update-index --no-skip-worktree
 	skipped = "!git ls-files -v | grep '^S' | cut -c 3-"
 	unskip-all = "!f() { \
