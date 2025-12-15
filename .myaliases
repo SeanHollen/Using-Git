@@ -6,6 +6,7 @@
 
 	# list out all of the commits in this branch concisely
 	logg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	logbr = !git --no-pager logg master..HEAD
 
 	# put my new indexed changes into the previous last commit in this branch
 	can = commit --amend --no-edit
