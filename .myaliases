@@ -24,7 +24,7 @@
 		stash_id=$(git stash list | grep \"$1\" | head -n 1 | cut -d: -f1); \
 		if [ -n \"$stash_id\" ]; then \
 		echo applying_stash; \
-			git stash apply \"$stash_id\"; \
+			git stash pop \"$stash_id\"; \
 		fi; \
 	}; f"
 
