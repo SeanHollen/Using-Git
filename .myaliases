@@ -29,17 +29,8 @@
 	}; f"
 
 	# list branches in order of when you last visited them
-	recent = "!f() { \
-		current=$(git rev-parse --abbrev-ref HEAD); \
-		git log -g --date=relative --format='%ad|%gs' \
-		| grep 'checkout: moving' \
-		| sed 's/|checkout: moving from .* to /|/' \
-		| awk -v cur=\"$current\" -F '|' '!seen[$2]++ { \
-			if ($2 == cur) { marker=\"*\" } else { marker=\" \" }; \
-			printf \"%s %-30s \\033[32m(%s)\\033[0m\\n\", marker, $2, $1; \
-		}' \
-		| head -n 6; \
-	}; f"
+	# https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
+	recent = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[$1]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr($2, 1, length($2)-1), $1)}'
 
 	# "skip" files to ignore any changes which I made to them
 	skip = "!f() { \
