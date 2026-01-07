@@ -51,7 +51,7 @@
 
 	# make a backup of my existing commits
 	backup = "!f() { \
-        target=\"backups/$(git rev-parse --abbrev-ref HEAD)/$(echo $RANDOM | git hash-object --stdin | cut -c 1-7)\"; \
+        target=\"backups/$(git rev-parse --abbrev-ref HEAD)/$(date +%Y%m%d-%H%M%S)\"; \
         git branch \"$target\" && echo \"Created backup: $target\"; \
     }; f"
 
