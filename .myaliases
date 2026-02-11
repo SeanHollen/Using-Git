@@ -18,15 +18,15 @@
 	fp = push --force-with-lease --force-if-includes
 
 	# stash current changes with branch name as message, then switch to the provided branch
-	sw = "!f() { \                                                                    
-        git stash push -u -m \"autostash-$(git rev-parse --abbrev-ref HEAD)\" && \
-        git switch \"$1\" && \                                                      
-        stash_id=$(git stash list | grep \"autostash-$1$\" | head -n 1 | cut -d: -f1
-        if [ -n \"$stash_id\" ]; then \
-            echo \"Applying stash: $stash_id\"; \
-            git stash apply \"$stash_id\" && git stash drop \"$stash_id\"; \
-        fi; \
-  	}; f"
+	sw = "!f() { \
+		git stash push -u -m autostash-$(git rev-parse --abbrev-ref HEAD) && \
+		git switch \"$1\" && \
+		stash_id=$(git stash list | grep autostash-$1 | head -n 1 | cut -d: -f1); \
+		if [ -n \"$stash_id\" ]; then \
+			echo applying stash: $stash_id; \
+			git stash apply \"$stash_id\" && git stash drop \"$stash_id\"; \
+		fi; \
+	}; f"
 
 	# list branches in order of when you last visited them
 	# https://ses4j.github.io/2020/04/01/git-alias-recent-branches/
