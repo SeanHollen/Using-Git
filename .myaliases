@@ -19,6 +19,7 @@
 
 	# stash current changes with branch name as message, then switch to the provided branch
 	sw = "!f() { \
+		git add -A && \
 		git stash push -u -m autostash-$(git rev-parse --abbrev-ref HEAD) && \
 		git switch \"$1\" && \
 		stash_id=$(git stash list | grep autostash-$1 | head -n 1 | cut -d: -f1); \
