@@ -101,3 +101,13 @@
 
 	# the number of lines of code, tracked by git, excludeing json/xml/md/yaml
 	lines = "!f() { p=${1:-.}; git ls-files \"$p\" | grep -Ev '\\.(json|xml|md|ya?ml)$' | xargs wc -l | tail -n1; }; f"
+
+    reb = "!f() { \
+        branch=\"$1\"; \
+        [ -n \"$branch\" ] || { echo 'usage: git reb <base-branch>'; exit 1; }; \
+        git fetch origin \"$branch\" || exit 1; \
+        upstream=\"origin/$branch\"; \
+        fork_point=$(git merge-base --fork-point \"$upstream\" HEAD 2>/dev/null || git merge-base \"$upstream\" HEAD) || exit 1; \
+        echo rebasing $(git rev-parse --abbrev-ref HEAD) onto \"$upstream\" from \"$fork_point\"; \
+        git rebase --onto \"$upstream\" \"$fork_point\" HEAD; \
+    }; f"
