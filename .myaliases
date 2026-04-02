@@ -109,5 +109,5 @@
         upstream=\"origin/$branch\"; \
         fork_point=$(git merge-base --fork-point \"$upstream\" HEAD 2>/dev/null || git merge-base \"$upstream\" HEAD) || exit 1; \
         echo rebasing $(git rev-parse --abbrev-ref HEAD) onto \"$upstream\" from \"$fork_point\"; \
-        git rebase --onto \"$upstream\" \"$fork_point\" HEAD; \
+        git rebase --onto \"$upstream\" \"$fork_point\"; \
     }; f"
