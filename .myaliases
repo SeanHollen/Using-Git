@@ -111,3 +111,5 @@
         echo rebasing $(git rev-parse --abbrev-ref HEAD) onto \"$upstream\" from \"$fork_point\"; \
         git rebase --onto \"$upstream\" \"$fork_point\"; \
     }; f"
+
+    cont = "!git add . && git rebase --continue --no-edit"
