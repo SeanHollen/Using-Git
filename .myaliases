@@ -113,3 +113,10 @@
     }; f"
 
     cont = "!git add . && git rebase --continue --no-edit"
+
+	# list branches sorted by last commit date
+	branches = "!f() { \
+		for k in $(git branch --format='%(refname:short)'); do \
+			printf '%s\\t%s\\n' \"$(git log --color -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' \"$k\")\" \"$k\"; \
+		done | sort; \
+	}; f"
